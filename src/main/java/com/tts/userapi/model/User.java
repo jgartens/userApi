@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class User {
@@ -12,8 +14,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Max(20)
     private String firstName;
+
+    @Min(2)
     private String lastName;
+
+    @Min(4)
+    @Max(20)
     private String state;
 
     public User(){}
