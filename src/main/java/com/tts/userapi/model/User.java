@@ -7,21 +7,29 @@ import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.Length;
+
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "Auto generated ID")
     private Long id;
 
-    @Max(20)
+    @Length(max = 20)
+    @ApiModelProperty(notes = "User's firstname")
     private String firstName;
 
-    @Min(2)
+    @Length(min = 2)
+    @ApiModelProperty(notes = "User's lastname")
     private String lastName;
 
-    @Min(4)
-    @Max(20)
+   
+    @Length(max = 20, min = 4)
+    @ApiModelProperty(notes = "User's state")
     private String state;
 
     public User(){}
